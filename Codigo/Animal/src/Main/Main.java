@@ -93,6 +93,8 @@ public class Main {
         ShowMenu();
         System.out.println("Digite a opcao desejada");
         System.out.println("\n");
+        int opcao34;
+        opcao34= sc.nextInt();
     //    opcao.opcaoEscolhida = sc.nextInt();
     //    TesteMenu(opcao);
     }
