@@ -24,7 +24,7 @@ public class Animal {
   protected String  nomePopular;
   protected int     contDoenca;
   protected boolean Doente;
-
+  
   Scanner sc = new Scanner(System.in);
   
   public Animal(){
@@ -124,6 +124,35 @@ public class Animal {
         return peso;
     }
 
+    public int getContDoenca() {
+        return contDoenca;
+    }
+
+    public void setContDoenca(int contDoenca) {
+        if(contDoenca > 0){
+         this.contDoenca = contDoenca;
+        }else{
+          this.contDoenca = 0;  
+        }
+        
+    }
+
+    public boolean isDoente() {
+        return Doente;
+    }
+
+    public void setDoente(boolean Doente) {
+        this.Doente = Doente;
+    }
+
+    public Scanner getSc() {
+        return sc;
+    }
+
+    public void setSc(Scanner sc) {
+        this.sc = sc;
+    }
+
     public void setPeso(float peso) {
         if(peso > 0)
         {
@@ -213,4 +242,8 @@ public class Animal {
       }
   }
   
+  public void Habitat()
+  {
+      System.out.println("Desconhecido");   
+  }
 }

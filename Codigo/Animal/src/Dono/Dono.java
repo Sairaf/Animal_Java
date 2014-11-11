@@ -25,7 +25,8 @@ public class Dono {
         this.qualidadeTratamento = "Desconhecido";
         this.numeroAnimais = 0;
     } 
-    
+
+      
     
     public String getNomeDono() {
         return nomeDono;
