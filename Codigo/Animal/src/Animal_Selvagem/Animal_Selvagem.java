@@ -53,4 +53,22 @@ public class Animal_Selvagem extends Animal{
    public void Habitat(){
      System.out.println("Floresta, Mar, etc."); 
    }
+   
+   @Override
+   public String toString(){
+       String s= super.toString();
+       int cont;
+       if(this.liderGrupo == false)
+       {
+        s = s+ "\n Este animal nao e o lider do grupo";   
+       }else{
+        s = s+ "\n Este animal e o lider do grupo";      
+       }
+       s = s + "\n Grupo: ";
+       for(cont = 0; cont < this.grupo.size(); cont++){
+       s = s+ "\n Animal numero " + cont + ": " + this.grupo.get(cont);
+    }
+       return s;
+   }
+   
 }

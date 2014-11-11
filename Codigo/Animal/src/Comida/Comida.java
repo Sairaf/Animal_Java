@@ -81,4 +81,17 @@ public class Comida {
         return false; 
      }         
    }
+   
+   @Override
+   public String toString(){
+     String s = null;
+      s = "\n Nome da Comida: "+ this.nomeComida + "\n Calorias: " + this.calorias + "\n Produzido a " + this.getMesesProducao() + " Meses" ;
+     
+      if(this.qualidadeComida == false){
+        s = s + "A qualidade da comida e pessima"  ;
+      }else{
+        s = s + "A qualidade da comida e boa"  ;  
+      }
+     return s;
+   }
 }

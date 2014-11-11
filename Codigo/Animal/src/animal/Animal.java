@@ -246,4 +246,17 @@ public class Animal {
   {
       System.out.println("Desconhecido");   
   }
+  
+  @Override
+  public String toString(){
+   String s = "\nNome cientifico: "+ this.nomeCientifico + "\n Nome Popular: " +this.nomePopular+ "\n Classe: " + this.classe + "\n Codigo do Animal: " + this.codigoAnimal + "\n Perigo de Extincao: " + this.perigoExtincao + "\n Idade: " + this.idade + "\n Peso: " +this.peso  ;   
+   if(this.Doente == false){
+     s = s +"\n O animal Nao esta doente. ";  
+   }else{
+     s = s +"\n Animal esta doente. ";    
+   }
+      return s;
+   }
+      
+  
 }

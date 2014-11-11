@@ -81,4 +81,13 @@ public class Dono {
      }
        return aux;
     }
+    
+    @Override
+    public String toString(){
+      String s = null;      
+      
+      s = "\nNome do Dono" + this.nomeDono + "\n Possui "+ this.numeroAnimais + " animal(is)\n";
+      s = s + this.qualidadeTratamento;
+      return s;
+    }
 }

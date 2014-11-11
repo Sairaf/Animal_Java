@@ -8,6 +8,7 @@ package Animal_Domesticado;
 import Dono.Dono;
 import animal.Animal;
 import java.util.ArrayList;
+
 /**
  *
  * @author PROPESPINFO
@@ -16,9 +17,7 @@ public class Animal_Domesticado extends Animal{
     private static final int MAX = 10;
     
     protected String apelido;
-    protected ArrayList <String> acessorios = new ArrayList <>();
     protected ArrayList <Dono> dono = new ArrayList <>();
-    protected int numAcessorios;
     protected int numDonos;
 
     public Animal_Domesticado(String apelido, int numAcessorios, int numDonos, String nomeCientifico, String classe, String codigoAnimal, int idade, String perigoExtincao, float peso, String nomePopular, int contDoenca, boolean Doente) {
@@ -26,9 +25,7 @@ public class Animal_Domesticado extends Animal{
         //super(nomeCientifico, classe, codigoAnimal, idade, perigoExtincao, peso, nomePopular, contDoenca, Doente);
         int cont;
         this.apelido = apelido;
-        this.numAcessorios = numAcessorios;
         this.numDonos = numDonos;
-        this.acessorios = null;
         this.dono = null;
     }
     
@@ -36,9 +33,7 @@ public class Animal_Domesticado extends Animal{
         /* super();*/
         int cont;
         this.apelido = "Nao possui";
-        this.numAcessorios = 0;
         this.numDonos = 0;
-        this.acessorios = null;
         this.dono = null;            
     }
 
@@ -54,16 +49,7 @@ public class Animal_Domesticado extends Animal{
        }
     }
 
-    public ArrayList<String> getAcessorios() {
-        return acessorios;
-    }
-
-    public void setAcessorios(String acessorios) {
-        if(!acessorios.isEmpty()){
-         this.acessorios.add(acessorios) ;    
-        }        
-    }
-
+  
     public ArrayList<Dono> getDono() {
         return dono;
     }
@@ -76,16 +62,7 @@ public class Animal_Domesticado extends Animal{
 
     
 
-    public int getNumAcessorios() {
-        return numAcessorios;
-    }
-
-    public void setNumAcessorios(int numAcessorios) {
-        if(numAcessorios > 0)
-          this.numAcessorios = numAcessorios;
-    }
-
-    public int getNumDonos() {
+      public int getNumDonos() {
         return numDonos;
     }
 
@@ -98,12 +75,23 @@ public class Animal_Domesticado extends Animal{
        animal.setDono(dono);
     }
     
-    public static void Adicionar_Acessorio(Animal_Domesticado animal, String acessorio){
-       animal.setAcessorios(acessorio);
-    }
-    
+        
     @Override
     public void Habitat(){
         System.out.println("Casa, Fazendas, etc.");  
+    }
+    
+    @Override
+    public String toString(){
+      String s;
+      int cont;
+      s = super.toString();
+      s = s+ "\n Apelido: " + this.apelido;
+      if(this.dono == null){
+        for(cont = 0;cont <this.dono.size(); cont++)  {
+          s = s + "\nDono de numero " + cont + ": " + this.dono.get(cont);
+        }
+      }
+      return s;
     }
 }
