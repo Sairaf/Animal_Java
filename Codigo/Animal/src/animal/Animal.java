@@ -6,6 +6,7 @@
 package animal;
 
 import Comida.Comida;
+import java.util.Scanner;
 
 /**
  *
@@ -14,14 +15,17 @@ import Comida.Comida;
 public class Animal {
     //Falta trabalhar com a classe Iddade
   // delcarado atributos  
-  private String  nomeCientifico;
-  private String  classe;
-  private String  codigoAnimal;
-  private int     idade;
-  private String  perigoExtincao;
-  private float   peso;
-  private String  nomePopular;
-  
+  protected String  nomeCientifico;
+  protected String  classe;
+  protected String  codigoAnimal;
+  protected int     idade;
+  protected String  perigoExtincao;
+  protected float   peso;
+  protected String  nomePopular;
+  protected int     contDoenca;
+  protected boolean Doente;
+
+  Scanner sc = new Scanner(System.in);
   
   public Animal(){
     this.nomeCientifico = "Desconhecido"  ;
@@ -31,9 +35,11 @@ public class Animal {
     this.perigoExtincao ="Desconhecido";
     this.peso = 0;
     this.nomePopular = "Desconhecido";
+    this.Doente = false;
+    this.contDoenca = 0;
   }
 
-    public Animal(String nomeCientifico, String classe, String codigoAnimal, int idade, String perigoExtincao, float peso, String nomePopular, boolean doente) {
+    public Animal(String nomeCientifico, String classe, String codigoAnimal, int idade, String perigoExtincao, float peso, String nomePopular, int contDoenca, boolean Doente) {
         this.nomeCientifico = nomeCientifico;
         this.classe = classe;
         this.codigoAnimal = codigoAnimal;
@@ -41,8 +47,11 @@ public class Animal {
         this.perigoExtincao = perigoExtincao;
         this.peso = peso;
         this.nomePopular = nomePopular;
+        this.contDoenca = contDoenca;
+        this.Doente = Doente;
     }
 
+    
     public Animal(final Animal animalCpy){
         this.nomeCientifico = animalCpy.nomeCientifico;
         this.classe = animalCpy.classe;
@@ -50,7 +59,9 @@ public class Animal {
         this.idade = animalCpy.idade;
         this.nomePopular = animalCpy.nomePopular;
         this.perigoExtincao = animalCpy.perigoExtincao;
-        this.peso = animalCpy.peso;                
+        this.peso = animalCpy.peso;   
+        this.contDoenca = animalCpy.contDoenca;
+        this.Doente = animalCpy.Doente;
     }
     
     public String getNomeCientifico() {
@@ -150,7 +161,56 @@ public class Animal {
   }
   
   public void Comer(Comida comida){
+   int quilo;   
+   
+   quilo = comida.getCalorias()/8000;
+   this.peso+=quilo;
+   if(comida.isQualidadeComida() == false){
+     this.contDoenca++;  
+    }  
+   }
+  
+  public int Velhice(int expectativa_Vida){
+    int aux = idade/expectativa_Vida;  
+    if(aux < 0.25){
+        System.out.println("Um filhote");  
+        return 0;
+    }else if(aux >= 0.25 && aux < 0.50){
+        System.out.println("Ainda um garoto");   
+        return 1;
+    } else if(aux >= 0.50 && aux < 0.75){
+        System.out.println("Um adulto");   
+        return 2;
+    } else if(aux >= 0.75 && aux < 1){
+        System.out.println("Um velho");   
+        return 3;
+   }else{
+        System.out.println("Alem da expectativa de vida");     
+        return 4;
+    }
+  }
+  
+  public static void Verificar_Se_Esta_Doente(Animal animal, int expectativa_Vida){
+      int aux; 
+      aux = animal.Velhice(expectativa_Vida);
       
+      if(aux == 1 && animal.contDoenca >= 5){
+        System.out.println("Este animal  esta doente");  ;
+      }
+      
+      if(aux == 2 && animal.contDoenca >= 8){
+        System.out.println("Este animal  esta doente");  ;
+      }
+      
+      if(aux == 3 && animal.contDoenca >= 10){
+        System.out.println("Este animal  esta doente");  ;
+      }
+      
+      if(aux == 4 && animal.contDoenca >= 3){
+        System.out.println("Este animal  esta doente");  ;
+      } else{
+        System.out.println("Este animal nao esta doente");  ;
+      }
   }
   
 }

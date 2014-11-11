@@ -66,17 +66,18 @@ public class Dono {
     }
     
     public String Verificar_Qualidade_Tratamento(int qualidade){
+        String aux = null;
       if(qualidade == 0)           {
-          return "Qualidade horrivel";
+          aux = "Qualidade horrivel";
       }else if(qualidade > 0&& qualidade <= 5){
-         return "Qualidade insuficiente";   
+         aux = "Qualidade insuficiente";   
       }else if(qualidade > 5&& qualidade <= 7){
-         return "Qualidade regular";   
+         aux = "Qualidade regular";   
       }else if(qualidade > 7&& qualidade <= 9){
-         return "Qualidade boa";   
+         aux = "Qualidade boa";   
       }else if(qualidade > 10){
-         return "Qualidade excelente";   
-      }
+         aux = "Qualidade excelente";   
+     }
+       return aux;
     }
-    
 }
