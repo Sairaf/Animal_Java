@@ -11,7 +11,7 @@ package Main;
  */
 public class Main {
     public enum Menu{
-        
+      ADICIONAR_ANIMAL, ADICIONAR_DONO, ADICIONAR_ACESSORIO, VERIFICAR_DOENCA,  
     }
     
     public static void main(String[] args) {
