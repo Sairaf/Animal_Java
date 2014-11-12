@@ -39,16 +39,16 @@ public class Animal {
     this.contDoenca = 0;
   }
 
-    public Animal(String nomeCientifico, String classe, String codigoAnimal, int idade, String perigoExtincao, float peso, String nomePopular, int contDoenca, boolean Doente) {
-        this.nomeCientifico = nomeCientifico;
-        this.classe = classe;
-        this.codigoAnimal = codigoAnimal;
-        this.idade = idade;
-        this.perigoExtincao = perigoExtincao;
-        this.peso = peso;
-        this.nomePopular = nomePopular;
-        this.contDoenca = contDoenca;
-        this.Doente = Doente;
+    public Animal(String nomeCientifico, String classe, String codigoAnimal, int idade, float peso, String nomePopular, int contDoenca, boolean Doente) {
+        this.setNomeCientifico(nomeCientifico);
+        this.setClasse(classe);
+        this.setCodigoAnimal(codigoAnimal);
+        this.setIdade(idade);
+        this.perigoExtincao = "Desconhecido";
+        this.setPeso(peso);
+        this.setNomePopular(nomePopular);
+        this.setContDoenca(contDoenca);
+        this.setDoente(Doente);
     }
 
     
@@ -98,7 +98,7 @@ public class Animal {
         if(!codigoAnimal.isEmpty() && codigoAnimal.length() == 12 && codigoAnimal.matches("[0-9]*") && codigoAnimal!= "000000000000"){                       
          this.codigoAnimal = codigoAnimal;
         }else{
-         this.codigoAnimal = "000000000000";               
+         this.codigoAnimal = "Desconhecido";               
         }           
     }
 
@@ -141,8 +141,8 @@ public class Animal {
         return Doente;
     }
 
-    public void setDoente(boolean Doente) {
-        this.Doente = Doente;
+    public void setDoente(boolean doente) {
+        this.Doente = doente;
     }
 
     public Scanner getSc() {
@@ -242,9 +242,9 @@ public class Animal {
       }
   }
   
-  public void Habitat()
+  public String Habitat()
   {
-      System.out.println("Desconhecido");   
+      return "Desconhecido";   
   }
   
   @Override

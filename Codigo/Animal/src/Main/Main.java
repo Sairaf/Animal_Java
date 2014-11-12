@@ -10,7 +10,7 @@ import animal.Animal;
 import Animal_Domesticado.Animal_Domesticado;
 import Animal_Selvagem.Animal_Selvagem;
 import Dono.Dono;
-import static Main.Main.Menu.ShowMenu;
+//import static Main.Main.Menu.ShowMenu;
 import java.util.ArrayList;
 import java.util.Scanner;
         
@@ -21,7 +21,7 @@ import java.util.Scanner;
 public class Main {
     
     public static final int MAXANIMAIS = 20;
-    
+    /*
     public enum Menu{
       ADICIONAR_ANIMAL_DOMESTICADO(1), ADICIONAR_ANIMAL_SELVAGEM(2), ADICIONAR_DONO(3), VERIFICAR_DOENCA(4), COMER(5), VELHICE(6), ADICIONAR_COMIDA(7), EXTINCAO(8),SAIR(0);
       
@@ -75,7 +75,7 @@ public class Main {
         }
        }while(opcao.opcaoEscolhida != 0);
    }
-    
+    */
    public static void cls(){       
       int i;
       for( i = 0; i < 50; i++){
@@ -85,18 +85,75 @@ public class Main {
    
     public static void main(String[] args) {
         Animal[] animais = new Animal[MAXANIMAIS];
-        //ArrayList <Animal> animais= new ArrayList<> ();
+        Animal teste = new Animal();
+        Animal_Domesticado auxD = new Animal_Domesticado();
+        Animal_Selvagem auxS = new Animal_Selvagem();
         Dono dono = new Dono();
         Comida racao = new Comida();
-        String nomeCientifico, classe, codigoAnimal, perigoExtincao, nomePopular, nomeDono, qualidadeTratamento, apelido;
-        int idade, contDoenca, numAnimais, numDonos, cont = 0;
+        //ArrayList <Animal> animais= new ArrayList<> ();
+        
+        //====================================================================
+        String nomeCientifico, classe, codigoAnimal, perigoExtincao = "Desconhecido", nomePopular, nomeDono, qualidadeTratamento = "Desc", apelido;
+        int idade = 0, contDoenca = 0, numAnimais, numDonos, cont = 0, qualidade = 0;
         float peso;
-        boolean lider, doente;
+        boolean lider, doente =  false;
         int opcao;
+        //====================================================================
         
         Scanner sc = new Scanner(System.in);
         
-        ShowMenu();
+        animais[0] = new Animal_Domesticado();
+        animais[1] = new Animal_Selvagem();
+        auxD = (Animal_Domesticado) animais[0];
+        auxS = (Animal_Selvagem) animais[1];
+        /*
+        if(animais[0] instanceof Animal_Domesticado){
+            cls();
+            System.out.println("GOGO POWER RANGERS WOWOWOWOOWOW");   
+        }*/
+                  System.out.println("\nDigite o nome cientifico do animal:");
+                  nomeCientifico = sc.nextLine();
+                  System.out.println("\nDigite a classe do animal:");
+                  classe = sc.nextLine();;
+                  System.out.println("\nDigite o codigo do animal:");
+                  codigoAnimal = sc.nextLine();
+                  System.out.println("\nDigite o nome popular do animal:");
+                  nomePopular = sc.nextLine();
+                  System.out.println("\nDigite o peso do animal:");
+                  peso = sc.nextFloat();
+                  System.out.println("\nDigite a idade do animal:");
+                  idade= sc.nextInt();
+                  System.out.println("\nDigite o apelido do animal:");
+                  apelido= sc.next();
+                  System.out.println("\n O animal esta doente(y=0/n=1)");
+                  opcao = sc.nextInt();
+                  if(opcao == 0){
+                     doente = true; 
+                  }else{
+                    doente = false;  
+                  }                  
+                  System.out.println("\nDigite o nome do dono: ");
+                  nomeDono = sc.next();
+                  System.out.println("\nEste dono possui quantos Animais?: ");
+                  numAnimais = sc.nextInt();
+                  System.out.println("\nDe 0 a 10, Digite a qualidade do Tratamento do dono com os senus animas: ");
+                  qualidade = sc.nextInt();
+                          
+                  Dono auxDono = new Dono(nomeDono, qualidadeTratamento, numAnimais);
+                  String pos;
+                  pos = (auxDono.Verificar_Qualidade_Tratamento(qualidade));                  
+                  System.out.println(pos);
+                  auxDono.setQualidadeTratamento(auxDono.Verificar_Qualidade_Tratamento(qualidade));                  
+                  
+                  
+                  animais[0] = new Animal_Domesticado(apelido, nomeCientifico, classe, codigoAnimal, idade, peso, nomePopular, contDoenca, doente);
+                  auxD = (Animal_Domesticado) animais[0] ;
+                  auxD.Adicionar_Dono(auxDono);
+                  System.out.println(auxD);
+        //5
+       // cls();
+        //System.out.println(auxS);
+        /*
         System.out.println("Digite a opcao desejada");
         System.out.println("\n");
         opcao = sc.nextInt();
@@ -117,12 +174,14 @@ public class Main {
                   System.out.println("\nDigite o peso do animal:");
                   peso = sc.nextFloat();
                   System.out.println("\nDigite a idade do animal:");
-                  peso = sc.nextInt();
-                  //Ajeitar o setter e getters
+                  idade= sc.nextInt();
+                  System.out.println("\nDigite o apelido do animal:");
+                  apelido= sc.next();
+                                    //Ajeitar o setter e getters
                   
                   
                   
-                  animais[cont] = new Animal_Domesticado();   
+                  
                  }else{
                      System.out.println("Limite de animais alcancado");   
                      ShowMenu();
@@ -131,7 +190,7 @@ public class Main {
                  
          }            
         }while(opcao != 0);
-    
+    */
     }
 }
 

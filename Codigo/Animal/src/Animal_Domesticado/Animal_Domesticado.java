@@ -17,24 +17,23 @@ public class Animal_Domesticado extends Animal{
     private static final int MAX = 10;
     
     protected String apelido;
-    protected ArrayList <Dono> dono = new ArrayList <>();
-    protected int numDonos;
+    private Dono dono =  new Dono();
+    private Dono auxDono = new Dono();        
+    //protected ArrayList <Dono> dono = new ArrayList <>();
 
-    public Animal_Domesticado(String apelido, int numAcessorios, int numDonos, String nomeCientifico, String classe, String codigoAnimal, int idade, String perigoExtincao, float peso, String nomePopular, int contDoenca, boolean Doente) {
-        super();
-        //super(nomeCientifico, classe, codigoAnimal, idade, perigoExtincao, peso, nomePopular, contDoenca, Doente);
+
+    public Animal_Domesticado(String apelido, String nomeCientifico, String classe, String codigoAnimal, int idade, float peso, String nomePopular, int contDoenca, boolean Doente) {
+        super(nomeCientifico, classe, codigoAnimal, idade, peso, nomePopular, contDoenca, Doente);
         int cont;
-        this.apelido = apelido;
-        this.numDonos = numDonos;
-        this.dono = null;
+        
+        this.setApelido(apelido);
+        this.setDono(dono);
     }
     
     public Animal_Domesticado(){
         super();
-        int cont;
         this.apelido = "Nao possui";
-        this.numDonos = 0;
-        this.dono = null;            
+        this.setDono(dono);            
     }
 
     public String getApelido() {
@@ -49,36 +48,28 @@ public class Animal_Domesticado extends Animal{
        }
     }
 
-  
-    public ArrayList<Dono> getDono() {
+    public Dono getDono() {
         return dono;
     }
 
     public void setDono(Dono dono) {
-        if(dono == null){
-         this.dono.add(dono);
-        }        
+        if(dono != null){
+         this.dono = dono;
+        }else{         
+         this.dono = auxDono;   
+        }
+                
     }
-
-    
-
-      public int getNumDonos() {
-        return numDonos;
-    }
-
-    public void setNumDonos(int numDonos) {
-        if(numDonos > 0)
-        this.numDonos = numDonos;
-    }
-    
-    public static void Adicionar_Dono(Animal_Domesticado animal, Dono dono){
-       animal.setDono(dono);
+   
+    public void Adicionar_Dono(Dono dono){
+        
+       this.setDono(dono);
     }
     
         
     @Override
-    public void Habitat(){
-        System.out.println("Casa, Fazendas, etc.");  
+    public String Habitat(){
+        return "Casa, Fazendas, etc.";  
     }
     
     @Override
@@ -86,12 +77,12 @@ public class Animal_Domesticado extends Animal{
       String s;
       int cont;
       s = super.toString();
-      s = s+ "\n Apelido: " + this.apelido;
-      if(this.dono == null){
-        for(cont = 0;cont <this.dono.size(); cont++)  {
-          s = s + "\nDono de numero " + cont + ": " + this.dono.get(cont);
-        }
-      }
+      s = s+ "\n=========================\n\nApelido: " + this.apelido;
+      s = s + "\n"  ;
+      s = s + "\nHabitat: "+ this.Habitat();
+      s = s +this.dono.toString();
       return s;
     }
+
+
 }

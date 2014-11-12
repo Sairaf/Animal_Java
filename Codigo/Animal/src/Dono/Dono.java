@@ -84,9 +84,13 @@ public class Dono {
     
     @Override
     public String toString(){
-      String s = null;      
-      
-      s = "\nNome do Dono" + this.nomeDono + "\n Possui "+ this.numeroAnimais + " animal(is)\n";
+      String s;      
+      if(this.numeroAnimais  <= 1){
+      s = "\n=========================\n\nNome do Dono: " + this.nomeDono + "\nPossui: "+ this.numeroAnimais + " animal: \n";
+          
+      }else {
+      s = "\n=========================\n\nNome do Dono: " + this.nomeDono + "\nPossui: "+ this.numeroAnimais + " animais: \n";    
+    }
       s = s + this.qualidadeTratamento;
       return s;
     }
