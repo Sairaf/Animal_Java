@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Animal_Selvagem;
+package animal;
 
 import animal.Animal;
 import java.util.ArrayList;

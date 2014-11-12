@@ -190,10 +190,17 @@ public class Animal {
   }
   
   public void Comer(Comida comida){
-   int quilo;   
+   float kilo;
+   float result;   
+   System.out.println(this.nomePopular +  "esta comendo " + comida.getNomeComida() + "\n");
+   kilo = comida.getCalorias()/8000;
+   result = this.peso;
+   this.peso+=kilo;
+   if(this.peso - result>= 0){
+       result = result - this.peso;
+       System.out.println("O animal encorgou " + result + "kilos.\n");   
+   }
    
-   quilo = comida.getCalorias()/8000;
-   this.peso+=quilo;
    if(comida.isQualidadeComida() == false){
      this.contDoenca++;  
     }  
