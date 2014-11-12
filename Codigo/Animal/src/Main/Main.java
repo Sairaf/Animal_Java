@@ -21,10 +21,6 @@ import java.util.Scanner;
 public class Main {
     
     public static final int MAXANIMAIS = 20;
-
-    private static void TesteMenu(Menu opcao) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     public enum Menu{
       ADICIONAR_ANIMAL_DOMESTICADO(1), ADICIONAR_ANIMAL_SELVAGEM(2), ADICIONAR_DONO(3), VERIFICAR_DOENCA(4), COMER(5), VELHICE(6), ADICIONAR_COMIDA(7), EXTINCAO(8),SAIR(0);
@@ -53,10 +49,13 @@ public class Main {
       }
     }
     
+       
+    
    public static void Testemenu(Menu opcao){
        do{
         if(opcao == Menu.ADICIONAR_ANIMAL_DOMESTICADO){
-            
+            System.out.println("testete");
+            System.exit(0);
         }else if(opcao == Menu.ADICIONAR_ANIMAL_SELVAGEM){
             
         } else if(opcao == Menu.ADICIONAR_DONO){
@@ -77,26 +76,62 @@ public class Main {
        }while(opcao.opcaoEscolhida != 0);
    }
     
+   public static void cls(){       
+      int i;
+      for( i = 0; i < 50; i++){
+          System.out.println("\n");  
+      }
+   }
+   
     public static void main(String[] args) {
-        
-        ArrayList <Animal> animais= new ArrayList<> ();
+        Animal[] animais = new Animal[MAXANIMAIS];
+        //ArrayList <Animal> animais= new ArrayList<> ();
         Dono dono = new Dono();
         Comida racao = new Comida();
         String nomeCientifico, classe, codigoAnimal, perigoExtincao, nomePopular, nomeDono, qualidadeTratamento, apelido;
-        int idade, contDoenca, numAnimais, numDonos;
+        int idade, contDoenca, numAnimais, numDonos, cont = 0;
         float peso;
         boolean lider, doente;
-        Menu opcao = null;
+        int opcao;
         
         Scanner sc = new Scanner(System.in);
         
         ShowMenu();
         System.out.println("Digite a opcao desejada");
         System.out.println("\n");
-        int opcao34;
-        opcao34= sc.nextInt();
-    //    opcao.opcaoEscolhida = sc.nextInt();
-    //    TesteMenu(opcao);
+        opcao = sc.nextInt();
+        
+        do{
+         switch(opcao){
+             case 1:
+                 if(cont < MAXANIMAIS){
+                  cls();
+                  System.out.println("\nDigite o nome cientifico do animal:");
+                  nomeCientifico = sc.next();
+                  System.out.println("\nDigite a classe do animal:");
+                  classe = sc.next();
+                  System.out.println("\nDigite o codigo do animal:");
+                  codigoAnimal = sc.next();
+                  System.out.println("\nDigite o nome popular do animal:");
+                  nomePopular = sc.next();
+                  System.out.println("\nDigite o peso do animal:");
+                  peso = sc.nextFloat();
+                  System.out.println("\nDigite a idade do animal:");
+                  peso = sc.nextInt();
+                  //Ajeitar o setter e getters
+                  
+                  
+                  
+                  animais[cont] = new Animal_Domesticado();   
+                 }else{
+                     System.out.println("Limite de animais alcancado");   
+                     ShowMenu();
+                     opcao = sc.nextInt();
+                 }
+                 
+         }            
+        }while(opcao != 0);
+    
     }
 }
 

@@ -29,8 +29,8 @@ public class Animal_Domesticado extends Animal{
         this.dono = null;
     }
     
-    public void Animal_Domesticado(){
-        /* super();*/
+    public Animal_Domesticado(){
+        super();
         int cont;
         this.apelido = "Nao possui";
         this.numDonos = 0;
