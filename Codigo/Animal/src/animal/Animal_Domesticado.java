@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 
 public class Animal_Domesticado extends Animal{
-    private static final int MAX = 10;
+  //  private static final int MAX = 10;
     
     protected String apelido;
     private Dono dono =  new Dono();
@@ -85,6 +85,7 @@ public class Animal_Domesticado extends Animal{
       s = s+ "\n=========================\n\nApelido: " + this.apelido;
       s = s + "\n"  ;
       s = s + "\nHabitat: "+ this.Habitat();
+      if(this.dono != null)
       s = s +this.dono.toString();
       return s;
     }

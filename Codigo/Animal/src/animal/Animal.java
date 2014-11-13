@@ -126,9 +126,10 @@ public class Animal {
         return perigoExtincao;
     }
 
-    public void setPerigoExtincao(int populacao) {
-        if(populacao > 0)
-         Verificar_Perigo_Extincao(populacao);        
+    public void setPerigoExtincao(String perigo) {
+        if(!perigo.isEmpty())
+         this.perigoExtincao = perigo;
+        
     }
 
     public float getPeso() {
@@ -219,6 +220,7 @@ public class Animal {
   
   public int Velhice(int expectativa_Vida){
     int aux = idade/expectativa_Vida;  
+          System.out.println(aux);
     if(aux < 0.25){
         System.out.println("Um filhote");  
         return 0;
@@ -237,25 +239,30 @@ public class Animal {
     }
   }
   
-  public static void Verificar_Se_Esta_Doente(Animal animal, int expectativa_Vida){
+  public void Verificar_Se_Esta_Doente(Animal animal, int expectativa_Vida){
       int aux; 
+ 
       aux = animal.Velhice(expectativa_Vida);
-      
-      if(aux == 1 && animal.contDoenca >= 5){
+      if(aux == 0 && animal.getContDoenca() >= 5){
         System.out.println("Este animal  esta doente");  ;
       }
       
-      if(aux == 2 && animal.contDoenca >= 8){
+      if(aux == 1 && animal.getContDoenca() >= 8){
         System.out.println("Este animal  esta doente");  ;
       }
       
-      if(aux == 3 && animal.contDoenca >= 10){
+      if(aux == 2 && animal.getContDoenca() >= 10){
         System.out.println("Este animal  esta doente");  ;
       }
       
-      if(aux == 4 && animal.contDoenca >= 3){
+      if(aux == 3 && animal.getContDoenca() >= 3){
         System.out.println("Este animal  esta doente");  ;
-      } else{
+      }
+      if(aux == 4 && animal.getContDoenca() >= 1){
+        System.out.println("Este animal  esta doente");  ;
+      }
+      
+      else{
         System.out.println("Este animal nao esta doente");  ;
       }
   }
