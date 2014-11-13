@@ -29,9 +29,9 @@ public class Main {
           System.out.println("3 - Adicionar Dono. \n");   
           System.out.println("4 - Verificar se animal esta doente. \n");   
           System.out.println("5 - Alimentar Animal. \n");   
-          System.out.println("6 - Verificar quão velho o animal está. \n");   
-          System.out.println("7 - Adicionar Comida. \n");   
-          System.out.println("8 - Verificar o Risco de extinção do animal");
+          System.out.println("6 - Verificar quão velho o animal está. \n");             
+          System.out.println("7 - Verificar o Risco de extinção do animal");
+          System.out.println("8 - Listar");
           System.out.println("0 - Sair. \n");   
       }
 
@@ -47,15 +47,16 @@ public class Main {
         Animal[] animais = new Animal[MAXANIMAIS];
         Animal_Domesticado auxD = new Animal_Domesticado();
         Animal_Selvagem auxS = new Animal_Selvagem();
-        
+        Dono dono = new Dono();
+        Comida comida = new Comida();
         //ArrayList <Animal> animais= new ArrayList<> ();
         
         //====================================================================
         int cont = 0;
         
         String nome_Cientifico, classe, codigo_Animal, perigo_Extincao = "Desconhecido", nome_Popular, nome_Dono, qualidade_Tratamento = "Desc", apelido, nomeComida;
-        int idade = 0, cont_Doenca = 0, num_Animais, num_Donos, qualidade_Dono = 0, calorias;
-        float peso;
+        int idade = 0, cont_Doenca = 0, num_Animais, num_Donos, qualidade_Dono = 0, expectativa_Vida,populacao ;
+        float peso,calorias;
         boolean lider = false, doente =  false, qualidade_Comida = true;
         int opcao,meses;
         
@@ -90,7 +91,8 @@ public class Main {
                   doente = false;                        
                   animais[cont] = new Animal_Domesticado(apelido, nome_Cientifico, classe, codigo_Animal, idade, peso, nome_Popular, cont_Doenca, doente);
                   auxD = (Animal_Domesticado) animais[cont];
-                  System.out.println("Animal Domestico adicionado com sucesso!!!");                                    
+                  System.out.println("Animal Domestico adicionado com sucesso!!!");               
+                  animais[cont] = auxD;
                   cont++;
                  }else{
                      System.out.println("Limite de animais alcancado");                      
@@ -128,6 +130,7 @@ public class Main {
                   animais[cont] = new Animal_Selvagem(lider, nome_Cientifico, classe, codigo_Animal, idade, perigo_Extincao, peso, nome_Popular, cont_Doenca, doente);
                   auxS = (Animal_Selvagem) animais[cont];
                   System.out.println("Animal Domestico adicionado com sucesso!!!");                                    
+                  animais[cont] = auxS;
                   cont++;
                  }else{
                      System.out.println("Limite de animais alcancado");                      
@@ -137,141 +140,119 @@ public class Main {
                  break;
                  
              case 3:
-             {
+             
                  opcao = cont+2;
                  while(opcao > cont){
                   System.out.println("Qual animal voce deseja adicionar dono? ");         
                   opcao = sc.nextInt();
                  }
                  
+                  if(animais[opcao] instanceof Animal_Domesticado){
+                   
                   System.out.println("\nDigite o nome do dono: ");
                   nome_Dono = sc.next();
                   System.out.println("\nEste dono possui quantos Animais?: ");
                   num_Animais = sc.nextInt();
                   System.out.println("\nDe 0 a 10, Digite a qualidade do Tratamento do dono com os seus animas: ");
                   qualidade_Dono = sc.nextInt();
-             }
-         }            
-        }while(opcao != 0);
-    }
-        
-        /*
-        animais[0] = new Animal_Domesticado();
-        animais[1] = new Animal_Selvagem();
-        auxD = (Animal_Domesticado) animais[0];
-        auxS = (Animal_Selvagem) animais[1];
-
-                  System.out.println("\nDigite o nome cientifico do animal:");
-                  nome_Cientifico = sc.nextLine();
-                  System.out.println("\nDigite a classe do animal:");
-                  classe = sc.nextLine();;
-                  System.out.println("\nDigite o codigo do animal:");
-                  codigo_Animal = sc.nextLine();
-                  System.out.println("\nDigite o nome popular do animal:");
-                  nome_Popular = sc.nextLine();
-                  System.out.println("\nDigite o peso do animal:");
-                  peso = sc.nextFloat();
-                  System.out.println("\nDigite a idade do animal:");
-                  idade= sc.nextInt();
-                  System.out.println("\nDigite o apelido do animal:");
-                  apelido= sc.next();
-                  System.out.println("\n O animal esta doente(y=0/n=1)");
-                  opcao = sc.nextInt();
-                  if(opcao == 0){
-                     doente = true; 
-                  }else{
-                    doente = false;  
-                  }                  
-                  System.out.println("\nDigite o nome do dono: ");
-                  nome_Dono = sc.next();
-                  System.out.println("\nEste dono possui quantos Animais?: ");
-                  num_Animais = sc.nextInt();
-                  System.out.println("\nDe 0 a 10, Digite a qualidade do Tratamento do dono com os seus animas: ");
-                  qualidade_Dono = sc.nextInt();
-                          
-                  Dono dono = new Dono(nome_Dono, qualidade_Tratamento, num_Animais);
-                  String pos;
-                  pos = (dono.Verificar_Qualidade_Tratamento(qualidade_Dono));                  
-                  System.out.println("\nJust popping out: " + pos+"\n");
-                  dono.setQualidadeTratamento(pos);                  
-                  
-                  if(dono.getNomeDono().equalsIgnoreCase("Clotilde")){
-                      
-                  }
-                  
-                  animais[cont] = new Animal_Domesticado(apelido, nome_Cientifico, classe, codigo_Animal, idade, peso, nome_Popular, cont_Doenca, doente);
-                  auxD = (Animal_Domesticado) animais[cont] ;
+                  dono.setNomeDono(nome_Dono);;
+                  dono.setNumeroAnimais(num_Animais);
+                  dono.Verificar_Qualidade_Tratamento(qualidade_Dono);
+                  auxD = (Animal_Domesticado) animais[opcao];
                   auxD.setDono(dono);
-                  System.out.println(auxD);
-                  cont++;
-                  
-                  //============================================================================
-                  System.out.println("\nDigite o nome da racao");
-                  nomeComida = sc.next();
-                  System.out.println("\nQuantas calorias esta racao possui");
-                  System.out.println("s\nOBS: 8000 CALORIAS == 1 KILO\n\n");
-                  calorias = sc.nextInt();
-                  System.out.println("Qual era a qualidade da comida?: (0 - para boa/ - para estragada)");
-                  opcao = sc.nextInt();
-                  if(opcao == 0){
-                    qualidade_Comida = true;  
+                  animais[opcao] = auxD;
                   }else{
-                    qualidade_Comida = false;  
+                      System.out.println("Animais selvagens nao tem dono...Eu acho");   
                   }
-                  System.out.println("Ha quanto tempo esta racao foi produzida: ");
-                  meses = sc.nextInt();
-                  
-                  Comida racao = new Comida(nomeComida, calorias, qualidade_Comida, meses);
-                  auxD.Comer(racao);
-                  cls();
-                  System.out.println(auxD);     
-       /*         
-        if(animais[0] instanceof Animal_Domesticado){
-            cls();
-            System.out.println("GOGO POWER RANGERS WOWOWOWOOWOW");   
-        }*/
-                  
-        //5
-       // cls();
-        //System.out.println(auxS);
-        /*
-        System.out.println("Digite a opcao desejada");
-        System.out.println("\n");
-        opcao = sc.nextInt();
-        
-        do{
-         switch(opcao){
-             case 1:
-                 if(cont < MAXANIMAIS){
-                  cls();
-                  System.out.println("\nDigite o nome cientifico do animal:");
-                  nomeCientifico = sc.next();
-                  System.out.println("\nDigite a classe do animal:");
-                  classe = sc.next();
-                  System.out.println("\nDigite o codigo do animal:");
-                  codigoAnimal = sc.next();
-                  System.out.println("\nDigite o nome popular do animal:");
-                  nomePopular = sc.next();
-                  System.out.println("\nDigite o peso do animal:");
-                  peso = sc.nextFloat();
-                  System.out.println("\nDigite a idade do animal:");
-                  idade= sc.nextInt();
-                  System.out.println("\nDigite o apelido do animal:");
-                  apelido= sc.next();
-                                    //Ajeitar o setter e getters
-                  
-                  
-                  
-                  
-                 }else{
-                     System.out.println("Limite de animais alcancado");   
-                     ShowMenu();
-                     opcao = sc.nextInt();
+
+                 ShowMenu();
+                 opcao = sc.nextInt();
+                 break;
+             case 4:
+                 opcao = cont+2;
+                 while(opcao > cont){
+                  System.out.println("Qual animal voce deseja Verificar se esta doente? ");         
+                  opcao = sc.nextInt();
+                 }
+             
+                 animais[cont].Verificar_Se_Esta_Doente(auxS, opcao);
+                 System.out.println("\n");
+                 ShowMenu();
+                 opcao = sc.nextInt();
+                 break;
+             case 5:
+                 cls();
+                 opcao = cont+2;
+                 while(opcao > cont){
+                  System.out.println("Qual animal voce deseja alimentar? ");         
+                  opcao = sc.nextInt();
+                 } 
+                 System.out.println("\nDigite o nome da Comida: ");
+                 nomeComida = sc.next();
+                 System.out.println("\nDigite quantas calorias a comida possui");
+                 System.out.println("\n 8000 calorias = 1 kilo");
+                 calorias = sc.nextFloat();
+                 System.out.println("\nHa Quantos meses ela foi produzida");
+                 meses = sc.nextInt();
+                 
+                 comida.setNomeComida(nomeComida);
+                 comida.setCalorias(calorias);
+                 comida.setMesesProducao(meses);
+                 
+                 animais[opcao].Comer(comida);
+                 
+                 System.out.println("\n");
+                 ShowMenu();
+                 opcao = sc.nextInt();
+                 break;
+                 
+             case 6:    
+                 cls();
+                 opcao = cont+2;
+                 while(opcao > cont){
+                  System.out.println("Qual animal voce deseja alimentar? ");         
+                  opcao = sc.nextInt();
+                 }
+                 System.out.println("Digite a Expectativa de vida deste animal: ");
+                 expectativa_Vida = sc.nextInt();
+                 animais[opcao].Velhice(expectativa_Vida);
+                 
+                 System.out.println("\n\n");
+                 ShowMenu();
+                 opcao = sc.nextInt();
+                 break;
+             case 7:
+                 cls();
+                 opcao = cont+2;
+                 while(opcao > cont){
+                  System.out.println("Qual animal voce deseja alimentar? ");         
+                  opcao = sc.nextInt();
                  }
                  
+                 System.out.println("Digite a populacao deste animal");
+                 populacao = sc.nextInt();
+                 
+                 animais[opcao].Verificar_Perigo_Extincao(populacao);
+                 
+                 System.out.println("\n\n");
+                 ShowMenu();
+                 opcao = sc.nextInt();
+                 break;
+             case 8:
+                 for(opcao = 0; opcao <cont; opcao++){
+                     System.out.println(animais[opcao]);  
+                 }
+                 
+                 System.out.println("\n\n");
+                 ShowMenu();
+                 opcao = sc.nextInt();
+                 break;
+             case 0:
+                 System.exit(0);
          }            
         }while(opcao != 0);
-    */
+       }
+        
     }
  
 

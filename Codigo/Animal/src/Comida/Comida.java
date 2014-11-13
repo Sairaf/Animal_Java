@@ -11,7 +11,7 @@ package Comida;
  */
 public class Comida {
    private String  nomeComida;
-   private int     calorias;
+   private float     calorias;
    private boolean qualidadeComida;//true - para boa| false - para ruim
    private int     mesesProducao; //Há quanto tempo ela foi produzida ou Animal/PLanta morreu
    
@@ -46,11 +46,11 @@ public class Comida {
         
     }
 
-    public int getCalorias() {
+    public float getCalorias() {
         return calorias;
     }
 
-    public void setCalorias(int calorias) {
+    public void setCalorias(float calorias) {
         if(calorias >= 0){
          this.calorias = calorias;   
         }else{
