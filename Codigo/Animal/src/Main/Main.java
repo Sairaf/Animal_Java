@@ -194,11 +194,10 @@ public class Main {
                    System.out.println("Qual animal voce deseja Verificar se esta doente? ");         
                    opcao = Integer.parseInt(sc.nextLine());
                   }
+                     int expec;
                      System.out.println("Digite a expectativa de vida do animal");
-                     opcao = Integer.parseInt(sc.nextLine());
-                     int t = 0;
-                     t = animais[cont].Velhice(40);
-                 //  animais[cont].Verificar_Se_Esta_Doente(animais[cont], t);
+                     expec = Integer.parseInt(sc.nextLine());
+                     animais[opcao].Verificar_Se_Esta_Doente(animais[opcao], expec);
                      
                  }else{
                      System.out.println("Nao existe animais registrado para realizar esta operacao");   
@@ -269,6 +268,7 @@ public class Main {
                   String aux;
                   aux = animais[opcao].Verificar_Perigo_Extincao(populacao);
                   animais[opcao].setPerigoExtincao(aux);
+                 System.out.println("\n" +aux);
                  }else{
                     System.out.println("Nao existem animais a ser adicionados");  
                  }
@@ -282,10 +282,10 @@ public class Main {
                  if(cont > 0){
                  for(opcao = 0; opcao <cont; opcao++){
                      if(animais[opcao] instanceof Animal_Domesticado){
-                         System.out.println("E um animal domestico"); 
+                         System.out.println("\nE um animal domestico"); 
              
                      }else if(animais[opcao] instanceof Animal_Selvagem){
-                         System.out.println("E um animal Selvagem");    
+                         System.out.println("\nE um animal Selvagem");    
                      }
                     System.out.println(animais[opcao]);  
                   }    
