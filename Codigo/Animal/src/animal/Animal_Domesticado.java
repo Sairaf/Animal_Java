@@ -1,7 +1,15 @@
+/**
+ *
+ * @author Abner Farias
+ */
+
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+  Sendo uma "filha" da classe Animal, Animal_Domesticado herda todos os atributos da classe Añimal. Portanto não explicarei dos
+  detalhes da superclasse.
+
+  Entao, o que a torna especial? Nao muito infelizmente. Alem de possuir um static final para ter o controle do que esta criando, cada animal possui um apelido
+ (cachorro = Totó), e o objeto dono e auxDono indica quais são as informçaoes do Dono. A classe tem um método para verificar qual a qualidade do
+criador, sem contar que ele sobreescreve as funções "Habitat" e "toString"
  */
 package animal;
 
@@ -9,10 +17,7 @@ import Dono.Dono;
 import animal.Animal;
 import java.util.ArrayList;
 
-/**
- *
- * @author PROPESPINFO
- */
+
 public class Animal_Domesticado extends Animal{
     private static final int MAX = 10;
     

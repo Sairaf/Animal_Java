@@ -1,7 +1,18 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ SuperClasse responsável por definir todo Animal deste programa. Extende para duas classes: "Animal_Domesticado" e 
+ "Animal_Selvagem". Decidi usar estas subclasses pois poderia criar facilmente subclasses a partir delas (Animal_Domesticado 
+ derivaria em cão, gato, coelho, etc.).
+
+ Assumindo que cada animal tenha um nome Científico (ex: Panthera tigris), uma classe (ex: mamífero, inseto), um codigo(000000432812)
+ idade(ex: 13 anos, 35 anos), um peso, nomePopular(Pantheras tigris == Tigre), um contador de doenças( crece conforme o animal
+ come alimentos estragados) e um verificador se ele está doente ou não, é possível criar um objeto desta classe.
+
+ Nos métodos, temos o "Comer(Comida)", onde, dada uma comida X, o animal alimenta-se dela, um método "Verificar_perigo_Extincao"
+ que retorna um indicador de qual o perigo de extinção de um animal, "Velhice(int Expectativa Vida)", que dada uma expectativa de vida,
+ retorna uma mensagem que varia dependendo da (idade atual/expectativa vida), além de um método que indica se ele está doente.
+
+ Existem outros métodos, como o "toString(Animal)", responsável por realizar uma função parecida com o operador "<<" do c++, e o "Habitat()"
+ indicando qual lugar será mais provável encontrar estes animais, e este será sobreescrito por suas subclasses.
  */
 package animal;
 
@@ -167,7 +178,7 @@ public class Animal {
         return nomePopular;
     }
 
-    public void setNomePopular(String nomePopular) {
+  public void setNomePopular(String nomePopular) {
         if(!nomePopular.isEmpty())
         {
          this.nomePopular = nomePopular;

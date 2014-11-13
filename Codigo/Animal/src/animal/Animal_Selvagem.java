@@ -1,17 +1,20 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+
+ * @author Abner Farias
+ 
+ "Irmã" de Animal_Domesticado, a classe ANumal_Selvagem é mais uma classe que herda da classe animal.
+
+ Nçao possui tantos atributos quanto a superclasse, mas possui uns importantes. Cada animal da classe "AnimalSelvagem" possue uma
+ variável indicando se ele é o líder do grupo(Caso já tenha um líder, nenhum outro poderá ser, conforme esta a condição no main), e existe
+ o vetor grupo, constituído de várioas objetos Animal_Selvagens, além do atributo MAXGRUPO, que delimita o tamanho máximo do grupo.
+
+ Para os métodos, temos um método para adicionar algum animal novato ao grupo, além dos "ToString()" e dos "Habitat()"
  */
 package animal;
 
 import animal.Animal;
 import java.util.ArrayList;
 
-/**
- *
- * @author PROPESPINFO
- */
 public class Animal_Selvagem extends Animal{
    
    protected static final int MAXGRUPO = 20;  
@@ -21,6 +24,7 @@ public class Animal_Selvagem extends Animal{
   // protected ArrayList <Animal_Selvagem> grupo = new ArrayList <>();
 
     public Animal_Selvagem() {
+        super();
         this.numGrupo = 0;
         this.setLiderGrupo(false);
         int i;

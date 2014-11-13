@@ -1,7 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *
+ * @author Abner Farias - 12/11/2014
+ * 
+ * Aqui que a execução do programa ocorre. Recebendo os import das classes auxiliares e subclasses,
+ * Esta classe possui um menu para poder realizar as ações desejadas(Adicionar animal, alimentá-lo, verificar se ele corre risco de extincao, etc.)
+ * Ela possui dois métodos: "ShowMenu()" que mostra as opções que veresão ser tomadas, e o "cls()", que "emula" a função
+ * system("cls") do c++.
+ * 
+ * No mais, a classe possui diversos atributos que auxiliarão na criação dos objetos, e a maior parte do programa é feito nas outras classes
+ * 
  */
 package Main;
 
@@ -14,10 +21,7 @@ import Dono.Dono;
 //import java.util.ArrayList;
 import java.util.Scanner;
         
-/**
- *
- * @author PROPESPINFO
- */
+
 public class Main {
     
     public static final int MAXANIMAIS = 20;  
@@ -249,6 +253,12 @@ public class Main {
                  break;
              case 0:
                  System.exit(0);
+             default:
+                 System.out.println("Opcao invalida");
+                 System.out.println("\n\n");
+                 ShowMenu();
+                 opcao = sc.nextInt();
+                 break;
          }            
         }while(opcao != 0);
        }
